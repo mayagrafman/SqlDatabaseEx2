@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "title";
+  src: url("../fonts/Pacifico-Regular.ttf");
+}
+
+body {
+  overflow: hidden;
+}
+
+.header {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+  background-color:blanchedalmond;
+  font-weight: 700;
+}
+
+a {
+  color: transparent;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "title";
+  font-weight: lighter;
+  color: coral;
+  line-height: 50%;
+}
+
+#loggedInDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.hidden {
+  display: none !important;
+}

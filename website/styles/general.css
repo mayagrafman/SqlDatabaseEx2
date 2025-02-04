@@ -1,0 +1,30 @@
+/* @font-face {
+  font-family: "Bebas Neue";
+  src: url("fonts/BebasNeue-Regular.ttf");
+}
+
+* {
+  font-family: "Bebas Neue";
+} */
+
+body {
+  margin: 0;
+  background-color: aliceblue;
+}
+
+#headerIframe {
+  display: block;
+  border: none;
+  width: 100%;
+  height: 58px;
+  overflow: hidden;
+  scroll-behavior: unset;
+}
+
+.container {
+  margin: 10px;
+}
+
+.hidden {
+  display: none !important;
+}

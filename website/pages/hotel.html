@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="../styles/general.css">
+</head>
+
+<body>
+  <iframe id="headerIframe" src="header.html"></iframe>
+
+  <div class="container">
+    <h1 id="hotelH1"></h1>
+
+    <label>Reserve a room for </label>
+    <input type="date" id="reservationInput">
+    <button id="reservationButton" disabled>Reserve</button>
+
+    <br />
+    <br />
+
+    <div>Already reserved on:</div>
+    <ul id="reservationUl"></ul>
+  </div>
+
+  <script type="module" src="hotel.js"></script>
+</body>
+
+</html>
