@@ -9,6 +9,7 @@ let userId = await getUserId();
 let hotelH1 = document.querySelector("#hotelH1") as HTMLHeadingElement;
 let reservationInput = document.querySelector("#reservationInput") as HTMLInputElement;
 let reservationButton = document.querySelector("#reservationButton") as HTMLButtonElement;
+let hotelImg = document.querySelector("#hotelImg") as HTMLImageElement;
 let reservationsUl = document.querySelector("#reservationUl") as HTMLUListElement;
 
 reservationInput.onchange = function() {
@@ -32,9 +33,11 @@ reservationButton.onclick = async function() {
 };
 
 
-let hotelName = await send("getHotel", hotelId) as Hotel;
 
-hotelH1.innerText = hotelName.Name;
+let hotel = await send("getHotel", hotelId) as Hotel;
+
+hotelH1.innerText = hotel.Name;
+hotelImg.src = hotel.Image;
 
 let dates = await send("getDates", hotelId) as string[];
 
