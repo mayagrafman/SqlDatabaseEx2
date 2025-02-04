@@ -15,6 +15,12 @@ class Program
 
     var database = new Database();
 
+    if (!database.Cities.Any())
+    {
+      database.Cities.Add(new City("Tel Aviv", "images/tel_aviv"));
+      database.Hotels.Add(new Hotel("Cucu Hotel", "images/cucu_hotel", 1));
+    }
+
     while (true)
     {
       (var request, var response) = server.WaitForRequest();
@@ -39,7 +45,15 @@ class Program
           /*──────────────────────────────────╮
           │ Handle your custome requests here │
           ╰──────────────────────────────────*/
-          response.SetStatusCode(405);
+          if (request.Path == "getCities") { 
+            var cities = database.Cities.ToArray();
+
+            response.Send(cities);
+          }
+          else
+          {
+            response.SetStatusCode(405);
+          }
 
           database.SaveChanges();
         }
@@ -60,6 +74,9 @@ class Database() : DbBase("database")
   /*──────────────────────────────╮
   │ Add your database tables here │
   ╰──────────────────────────────*/
+  public DbSet<User> Users { get; set; } = default!;
+  public DbSet<City> Cities { get; set; } = default!;
+  public DbSet<Hotel> Hotels { get; set; } = default!;
 }
 
 class User(string id, string username, string password)
@@ -67,4 +84,20 @@ class User(string id, string username, string password)
   [Key] public string Id { get; set; } = id;
   public string Username { get; set; } = username;
   public string Password { get; set; } = password;
+}
+
+class City(string name, string image)
+{
+  [Key] public int Id { get; set; } = default!;
+  public string Name { get; set; } = name;
+  public string Image { get; set; } = image;
+}
+
+class Hotel(string name, string image, int cityId)
+{
+  [Key] public int Id { get; set; } = default!;
+  public string Name { get; set; } = name;
+  public string Image { get; set; } = image;
+  [ForeignKey("City")] public int CityId { get; set; } = cityId;
+  public City City { get; set; } = default!;
 }
