@@ -166,6 +166,12 @@ class Program
 
             database.Remove(res);
           }
+          else if(request.Path =="gethotels")
+          {
+            var cityId = request.GetBody<string>();
+
+            var relevanthotels = database.Hotels.Where(relevanthotels=>
+          }
           else
           {
             response.SetStatusCode(405);
