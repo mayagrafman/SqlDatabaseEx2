@@ -30,7 +30,7 @@
     {
       "label": "Open New Terminal",
       "type": "shell",
-      "command": "exec $SHELL",
+      "command": "start cmd",
       "presentation": {
         "reveal": "always",
         "focus": true,

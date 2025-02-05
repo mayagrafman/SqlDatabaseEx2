@@ -31,7 +31,7 @@ class Program
       database.Cities.Add(new City("Haifa", "/website/images/haifa.jpg"));
       database.Hotels.Add(new Hotel("Nof Hotel", "/website/images/nof_hotel.webp", 3));
       database.Hotels.Add(new Hotel("Haifa Hostel", "/website/images/haifa_hostel.webp", 3));
-      database.Hotels.Add(new Hotel("Cohen's Hostel", "/website/images/cohens_hostel.webp", 3));
+      database.Hotels.Add(new Hotel("Cohen's Hostel", "/website/images/cohens_hotel.webp", 3));
       database.Hotels.Add(new Hotel("Templer's House", "/website/images/templers_house.webp", 3));
 
       database.SaveChanges();
@@ -112,14 +112,6 @@ class Program
           }
           else if (request.Path == "getHotels")
           {
-            var cityId = request.GetBody<int>();
-
-            var hotels = database
-              .Hotels
-              .Where(hotel => hotel.CityId == cityId)
-              .ToArray();
-
-            response.Send(hotels);
           }
           else if (request.Path == "getHotel")
           {
